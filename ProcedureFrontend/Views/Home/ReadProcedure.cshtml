@@ -1,0 +1,63 @@
+﻿@using System.Data
+@model DataTable
+
+@{
+    ViewData["Title"] = "ReadProcedure";
+}
+@*<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+    <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>Warning!</h4>
+        <p>Please note this is still in development.</p>
+    </div>
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">@ViewData["Title"]</h3>
+        </div>
+
+        <div class="panel-body">
+            <table cellpadding="0" cellspacing="0" class="table table-hover table-responsive">
+                @if (Model.Rows.Count != 0)
+                {
+                <tr>
+                    <th>StepNumber</th>
+                    <th>StepDescription</th>
+                    <th>StepType</th>
+                    <th>Version</th>
+                    <th>ProcedureName</th>
+                    <th>ProcedureId</th>
+                </tr>
+
+                    foreach (DataRow row in Model.Rows)
+                    {
+            <tr>
+                <td>@row["StepNumber"]</td>
+                <td>@row["StepDescription"]</td>
+                <td>@row["StepType"]</td>
+                <td>@row["Version"]</td>
+                <td>@row["ProcedureName"]</td>
+                <td>@row["ProcedureId"]</td>
+            </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td><h2>No Data</h2></td></tr>
+                }
+            </table>
+        </div>
+    </div>
+</body>
+</html>

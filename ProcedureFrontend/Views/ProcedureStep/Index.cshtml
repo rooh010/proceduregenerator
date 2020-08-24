@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProcedureLib.Models.ProcedureStepModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcedureId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StepId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StepNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StepDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StepType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcedureId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StepId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StepNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StepDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StepType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProcedureId">Edit</a> |
+                <a asp-action="View" asp-route-id="@item.ProcedureId">View</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProcedureId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

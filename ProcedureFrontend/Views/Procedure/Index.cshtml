@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ProcedureLib.Models.ProcedureModel>
+
+@{
+    ViewData["Title"] = "ListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListView</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcedureId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcedureName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Version)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcedureId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcedureName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProcedureId">Edit</a> |
+                <a asp-action="View" asp-route-id="@item.ProcedureId">View</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProcedureId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
